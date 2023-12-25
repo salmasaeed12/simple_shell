@@ -7,8 +7,9 @@
  */
 int main(void)
 {
-char str[] = "HELLO TASH ZERO\n";
+char str[] = "HELLO TASk ZERO\n";
 int i = 0;
+
 while (str[i])
 {
 putchar(str[i]);
