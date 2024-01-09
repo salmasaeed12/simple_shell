@@ -94,7 +94,9 @@ int cmd_buf_type;
 int readfd;
 int histcount;
 } info_t;
-
+int _strlen(const char *string);
+void Display_terminal(void);
+void read_input(void);
 char *tokenization(char *line, const char *delimiter);
 
 #endif
