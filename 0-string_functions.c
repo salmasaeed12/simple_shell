@@ -19,8 +19,7 @@ return (i);
  *@str1: the first value
  *@str2: the second value
  *
- *Return: negative value if str1 > str2 ,positive if str1
-< str2 ,zero if they are equaled
+ *Return: negative value if str1 > str2
  */
 int _strcmp(char *str1, char *str2)
 {
