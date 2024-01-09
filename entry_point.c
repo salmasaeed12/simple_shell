@@ -8,7 +8,7 @@
  */
 void Display_terminal(void)
 {
-const char *prompt = "(Eshell) $ ";
+const char *prompt = "$ ";
 (void)write(STDOUT_FILENO, prompt, _strlen(prompt));
 }
 /**
@@ -30,6 +30,35 @@ read = getline(&line, &len, stdin);
 if (read != -1)
 tokenization(line);
 else
-perror("getline");
+{
+_exit();
+}
 free(line);
+}
+void execute_command(char **args)
+{
+pid_t pid, wpid;
+int status;
+
+pid = fork();
+
+if (pid == 0)
+{
+if (execve(args[0], args) == -1)
+{
+perror("Error");
+}
+exit(EXIT_FAILURE);
+}
+else if (pid < 0)
+{
+perror("Fork failed");
+}
+else
+{
+do
+{
+wpid = waitpid(pid, &status, WUNTRACED);
+} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+}
 }

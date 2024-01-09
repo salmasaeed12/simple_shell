@@ -12,7 +12,7 @@
 #include <fcntl.h>
 #include <errno.h>
 
-#define MAX_TOKENS 1000
+#define MAX_TOKENS 1024
 /* For read or write buffers */
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
@@ -94,9 +94,17 @@ int cmd_buf_type;
 int readfd;
 int histcount;
 } info_t;
+
+void exit_builtin(void);
 int _strlen(const char *string);
+int _strcmp(const char *str1, const char *str2, int lenght);
+void _strcat(char *dest, const char *src);
+char **tokenization(char *line, const char *delimiter);
+char **access_function(char **tokenArray);
+char *get_env(const char *find);
 void Display_terminal(void);
 void read_input(void);
-char *tokenization(char *line, const char *delimiter);
+void execute_command(char **args);
+
 
 #endif
