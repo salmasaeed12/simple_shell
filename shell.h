@@ -94,4 +94,6 @@ typedef struct passinfo
     int histcount;
 } info_t;
 
+char *tokenization(char *line , const char *delimiter);
+
 #endif

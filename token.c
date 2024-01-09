@@ -1,22 +1,23 @@
 #include "shell.h"
 #include <stdio.h>
 
-char *tokenization(char *line ,const char *delimiter)
+char *tokenization(char *line , const char *delimiter)
 {
-    char *token;
-    if (line == NULL)
-    {
-        perror("Memory allocation error");
-        exit(EXIT_FAILURE);
-    }
+char *token;
 
-    token = strtok(line, delimiter);
+if (line == NULL)
+{
+perror("Memory allocation error");
+exit(EXIT_FAILURE);
+}
 
-    while (token != NULL)
-    {
-        printf("Token: %s\n", token);
-        token = strtok(NULL, delimiter);
-    }
+token = strtok(line, delimiter);
 
-    return (line);
+while (token != NULL)
+{
+printf("Token: %s\n", token);
+token = strtok(NULL, delimiter);
+}
+
+return (line);
 }
