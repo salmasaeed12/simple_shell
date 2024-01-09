@@ -12,6 +12,7 @@
 #include <fcntl.h>
 #include <errno.h>
 
+#define MAX_TOKENS 1000
 /* For read or write buffers */
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
