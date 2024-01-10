@@ -21,6 +21,7 @@ void read_input(void)
 char *line = NULL;
 size_t len = 0;
 int read;
+
 #ifdef _POSIX_C_SOURCE
 #undef _POSIX_C_SOURCE
 #define _POSIX_C_SOURCE 200809L
@@ -30,35 +31,6 @@ read = getline(&line, &len, stdin);
 if (read != -1)
 tokenization(line);
 else
-{
-_exit();
-}
+perror("getline");
 free(line);
-}
-void execute_command(char **args)
-{
-pid_t pid, wpid;
-int status;
-
-pid = fork();
-
-if (pid == 0)
-{
-if (execve(args[0], args) == -1)
-{
-perror("Error");
-}
-exit(EXIT_FAILURE);
-}
-else if (pid < 0)
-{
-perror("Fork failed");
-}
-else
-{
-do
-{
-wpid = waitpid(pid, &status, WUNTRACED);
-} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-}
 }

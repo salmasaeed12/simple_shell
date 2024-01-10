@@ -28,24 +28,25 @@ token = strtok(NULL, delimiter);
 tokenArray[tokenCount] = NULL;
 return (tokenArray);
 }
-char **access_function(char **tokenArray)
-{
-    pid_t pid;
-    char **value;
-    if (access(tokenArray[0], F_OK) == -1)
-    {
-        pid = fork;
-        if (fork != -1)
-        {
-         value = tokenization(get_env(tokenArray), ':');
-         if(value != '\0' && tokenArray != '\0')
-         _strcat(value, tokenArray);
-        }
-    }
-    else
-    {
-        execute_command(tokenArray);
-    }
-
-    return (tokenArray);
-}
+/*
+ * char **access_function(char **tokenArray)
+ * {
+ * pid_t pid;
+ *  char **value;
+ *  if (access(tokenArray[0], F_OK) == -1)
+ *   {
+ *       pid = fork;
+ *       if (fork != -1)
+ *       {
+ *        value = tokenization(get_env(tokenArray), ':');
+ *        if(value != '\0' && tokenArray != '\0')
+ *        _strcat(value, tokenArray);
+ *       }
+ *   }
+ *   else
+ *   {
+ *        execute_command(tokenArray);
+ *   }
+ * return (tokenArray);
+ * }
+*/
