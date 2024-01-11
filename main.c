@@ -13,7 +13,7 @@ int main(int argc, char **argv, char **env)
 while (isatty(STDIN_FILENO) == 1)
 {
 Display_terminal();
-read_input();
+/*read_input();*/
 }
 /*exit_builtin();*/
 return (0);

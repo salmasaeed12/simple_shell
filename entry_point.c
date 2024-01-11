@@ -11,26 +11,3 @@ void Display_terminal(void)
 const char *prompt = "$ ";
 (void)write(STDOUT_FILENO, prompt, _strlen(prompt));
 }
-/**
- * read_input - Read user input from the terminal.
- * This function reads a line of input from
- * the user and processes it as needed.
- */
-void read_input(void)
-{
-char *line = NULL;
-size_t len = 0;
-int read;
-
-#ifdef _POSIX_C_SOURCE
-#undef _POSIX_C_SOURCE
-#define _POSIX_C_SOURCE 200809L
-#endif
-
-read = getline(&line, &len, stdin);
-if (read != -1)
-tokenization(line);
-else
-perror("getline");
-free(line);
-}
